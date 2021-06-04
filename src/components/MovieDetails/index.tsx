@@ -138,7 +138,9 @@ const MovieDetails: FC<MovieDetailsProps> = ({ movieDetails }) => {
           </div>
         </div>
       )}
-      {movieDetails?.Error && <ErrorComponent errorMessage={movieDetails?.Error} />}
+      {movieDetails?.Error && (
+        <ErrorComponent errorMessage={movieDetails?.Error} />
+      )}
     </>
   );
 };

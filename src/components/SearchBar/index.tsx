@@ -8,7 +8,11 @@ interface SearchBarProps {
   setCurrentPage: Function;
 }
 
-const SearchBar: FC<SearchBarProps> = ({ searchResult, searchTerm, setCurrentPage }) => {
+const SearchBar: FC<SearchBarProps> = ({
+  searchResult,
+  searchTerm,
+  setCurrentPage,
+}) => {
   const [searchText, setSearchText] = useState('');
   const [hasReqError, setHasReqError] = useState(false);
 

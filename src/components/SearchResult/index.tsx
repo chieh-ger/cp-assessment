@@ -19,7 +19,7 @@ const SearchResultComponent: FC<SearchResultProps> = ({
   setNewResults,
   searchTerm,
   currentPage,
-  setCurrentPage
+  setCurrentPage,
 }) => {
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const [totalPages, setTotalPages] = useState<number>(1);
@@ -30,12 +30,12 @@ const SearchResultComponent: FC<SearchResultProps> = ({
 
   useEffect(() => {
     setCurrent(currentPage);
-  },[currentPage]);
-  
+  }, [currentPage]);
+
   useEffect(() => {
     setShowDetails(false);
     searchResult?.totalResults &&
-      searchResult?.Response.toLowerCase() === 'true'
+    searchResult?.Response.toLowerCase() === 'true'
       ? setTotalPages(Math.floor(parseInt(searchResult.totalResults) / 10))
       : setTotalPages(1);
   }, [searchResult]);
@@ -68,7 +68,11 @@ const SearchResultComponent: FC<SearchResultProps> = ({
               key={`movie-poster-${searchItem.imdbID}`}
               onClick={() => getMovieDetails(searchItem.Title)}
             >
-              <p><span>{searchItem.Title}</span><br />{searchItem.Year}</p>
+              <p>
+                <span>{searchItem.Title}</span>
+                <br />
+                {searchItem.Year}
+              </p>
               <img
                 tabIndex={index + 1}
                 aria-label={searchItem.Title}
