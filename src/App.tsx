@@ -8,6 +8,7 @@ const App = () => {
   const [movieResult, setMovieResult] =
     useState<SearchResult | undefined>(undefined);
   const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState<number>(0);
 
   return (
     <div className="app">
@@ -21,11 +22,14 @@ const App = () => {
           <SearchBarComponent
             searchResult={setMovieResult}
             searchTerm={setSearchTerm}
+            setCurrentPage={setCurrentPage}
           />
           <SearchResultComponent
             searchResult={movieResult}
             setNewResults={setMovieResult}
             searchTerm={searchTerm}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
           />
         </div>
       </div>

@@ -9,13 +9,17 @@ import { NO_IMG } from '../../config';
 interface SearchResultProps {
   searchResult: SearchResult | undefined;
   setNewResults: Function;
+  setCurrentPage: Function;
   searchTerm: string;
+  currentPage: number;
 }
 
 const SearchResultComponent: FC<SearchResultProps> = ({
   searchResult,
   setNewResults,
   searchTerm,
+  currentPage,
+  setCurrentPage
 }) => {
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const [totalPages, setTotalPages] = useState<number>(1);
@@ -25,6 +29,10 @@ const SearchResultComponent: FC<SearchResultProps> = ({
   const movieDetailRef = useRef(null);
 
   useEffect(() => {
+    setCurrent(currentPage);
+  },[currentPage]);
+  
+  useEffect(() => {
     setShowDetails(false);
     searchResult?.totalResults &&
       searchResult?.Response.toLowerCase() === 'true'
@@ -33,6 +41,7 @@ const SearchResultComponent: FC<SearchResultProps> = ({
   }, [searchResult]);
 
   const updatePage = async (newVal: number) => {
+    setCurrentPage(newVal);
     setCurrent(newVal);
     setNewResults(await getMovieList(searchTerm, newVal));
   };
@@ -59,7 +68,7 @@ const SearchResultComponent: FC<SearchResultProps> = ({
               key={`movie-poster-${searchItem.imdbID}`}
               onClick={() => getMovieDetails(searchItem.Title)}
             >
-              <p><span style={{padding: '10px'}}>{searchItem.Title}</span><br />{searchItem.Year}</p>
+              <p><span>{searchItem.Title}</span><br />{searchItem.Year}</p>
               <img
                 tabIndex={index + 1}
                 aria-label={searchItem.Title}

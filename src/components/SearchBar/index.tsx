@@ -5,14 +5,16 @@ import ErrorComponent from '../ErrorComponent';
 interface SearchBarProps {
   searchResult: Function;
   searchTerm: Function;
+  setCurrentPage: Function;
 }
 
-const SearchBar: FC<SearchBarProps> = ({ searchResult, searchTerm }) => {
+const SearchBar: FC<SearchBarProps> = ({ searchResult, searchTerm, setCurrentPage }) => {
   const [searchText, setSearchText] = useState('');
   const [hasReqError, setHasReqError] = useState(false);
 
   const searchMovie = async () => {
     searchResult(undefined);
+    setCurrentPage(1);
     try {
       setHasReqError(false);
       const response = await getMovieList(searchText);

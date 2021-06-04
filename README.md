@@ -6,7 +6,7 @@ Create a react application that would make use of the OMDB API to retrieve movie
 
 ## Notes
 
-- ts-ignore used in SearchResult component on Line 37 as the reference could be null at that point but given scope and time constraint, I decided to use ts-ignore for now. Usually this would be fixed upon the next iteration.
+- ts-ignore used in SearchResult component on Line 52 as the reference could be null at that point but given scope and time constraint, I decided to use ts-ignore for now. Usually this would be fixed upon the next iteration.
 
 - Made use of Typescript and models for service responses
 
