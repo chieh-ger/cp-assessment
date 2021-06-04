@@ -7,11 +7,9 @@ interface ErrorComponentProps {
 const ErrorComponent: FC<ErrorComponentProps> = ({ errorMessage }) => {
   return (
     <>
-      <div className="alert alert-danger">
-        {errorMessage}
-      </div>
+      <div className="alert alert-danger">{errorMessage}</div>
     </>
   );
-}
+};
 
 export default ErrorComponent;

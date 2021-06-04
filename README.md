@@ -1,9 +1,11 @@
 # ChargePoint Assessment
 
 ## Description
+
 Create a react application that would make use of the OMDB API to retrieve movies based on a search criteria and display their respective posters for the user to see. You can also click on the poster itself to view more information around that particular movie
 
 ## Notes
+
 - ts-ignore used in SearchResult component on Line 37 as the reference could be null at that point but given scope and time constraint, I decided to use ts-ignore for now. Usually this would be fixed upon the next iteration.
 
 - Made use of Typescript and models for service responses
@@ -19,5 +21,6 @@ Create a react application that would make use of the OMDB API to retrieve movie
 - Test are added to ensure the API does return correctly and app components rendered
 
 ## How to run
+
 - yarn add
 - yarn start
