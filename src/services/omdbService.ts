@@ -1,5 +1,5 @@
 import { OMDB_URL, API_KEY } from '../config';
-import { MovieResult} from '../models';
+import { MovieResult, SearchResult} from '../models';
 import axios from 'axios';
 
 export const getMovie = async(title: string): Promise<MovieResult> => {
@@ -13,7 +13,7 @@ export const getMovie = async(title: string): Promise<MovieResult> => {
     }
 }
 
-export const getMovieList = async(title: string, page?: number): Promise<MovieResult> => {
+export const getMovieList = async(title: string, page?: number): Promise<SearchResult> => {
     try {
         const PARAMS = `s=${title}`;
         const response = await axios.get(`${OMDB_URL}/?apikey=${API_KEY}&${PARAMS}&page=${page}`, {headers: {'Content-Type': 'application/json'}});
