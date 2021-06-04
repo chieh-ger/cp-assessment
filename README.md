@@ -24,7 +24,7 @@ Create a react application that would make use of the OMDB API to retrieve movie
 
 ## How to run
 
-1 ```yarn```
-2 ```yarn test``` Run this to ensure App component and services/helpers are working as expected (Optional)
-2 ```yarn start```
+1 ```yarn``` 
+2 ```yarn test``` Run this to ensure App component and services/helpers are working as expected (Optional) 
+3 ```yarn start```
 
