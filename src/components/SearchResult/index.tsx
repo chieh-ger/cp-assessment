@@ -27,7 +27,7 @@ const SearchResultComponent: FC<SearchResultProps> = ({
   useEffect(() => {
     setShowDetails(false);
     searchResult?.totalResults &&
-    searchResult?.Response.toLowerCase() === 'true'
+      searchResult?.Response.toLowerCase() === 'true'
       ? setTotalPages(Math.floor(parseInt(searchResult.totalResults) / 10))
       : setTotalPages(1);
   }, [searchResult]);
@@ -38,8 +38,8 @@ const SearchResultComponent: FC<SearchResultProps> = ({
   };
 
   const getMovieDetails = async (title: string) => {
-    setShowDetails(true);
     setMovieDetails(await getMovie(title));
+    setShowDetails(true);
     //@ts-ignore
     movieDetailRef.current.scrollIntoView({ behavior: 'smooth' });
   };
@@ -57,8 +57,9 @@ const SearchResultComponent: FC<SearchResultProps> = ({
               title={searchItem.Title}
               className="movie-card"
               key={`movie-poster-${searchItem.imdbID}`}
+              onClick={() => getMovieDetails(searchItem.Title)}
             >
-              <p>{searchItem.Year}</p>
+              <p><span style={{padding: '10px'}}>{searchItem.Title}</span><br />{searchItem.Year}</p>
               <img
                 tabIndex={index + 1}
                 aria-label={searchItem.Title}
@@ -73,7 +74,6 @@ const SearchResultComponent: FC<SearchResultProps> = ({
                 onKeyPress={e =>
                   e.key === 'Enter' ? getMovieDetails(searchItem.Title) : ''
                 }
-                onClick={() => getMovieDetails(searchItem.Title)}
               />
             </div>
           ))}

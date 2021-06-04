@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { MovieResult } from '../../models';
 import '../../styles/movieDetails.css';
 import ErrorComponent from '../ErrorComponent';
+import { convertTime } from '../../helpers/convertDuration';
 import { NO_IMG } from '../../config';
 
 interface MovieDetailsProps {
@@ -11,7 +12,7 @@ interface MovieDetailsProps {
 const MovieDetails: FC<MovieDetailsProps> = ({ movieDetails }) => {
   return (
     <>
-      {movieDetails?.Response.toLowerCase() === 'true' ? (
+      {movieDetails?.Response.toLowerCase() === 'true' && (
         <div
           className="movie-result-block"
           key={`movie-details-${movieDetails.imdbID}`}
@@ -23,7 +24,7 @@ const MovieDetails: FC<MovieDetailsProps> = ({ movieDetails }) => {
             title={`Runtime: ${movieDetails?.Runtime}`}
             aria-label={`Runtime: ${movieDetails?.Runtime}`}
           >
-            {movieDetails?.Runtime}
+            {convertTime(parseInt(movieDetails?.Runtime.split(' ')[0]))}
           </p>
           <p
             title={`Rated: ${movieDetails?.Rated}`}
@@ -51,6 +52,7 @@ const MovieDetails: FC<MovieDetailsProps> = ({ movieDetails }) => {
                   : NO_IMG
               }
               width="100%"
+              height="450px"
               style={{ alignContent: 'start' }}
               alt={`Movie - ${movieDetails?.Title} Released in ${movieDetails?.Released}`}
             />
@@ -135,9 +137,8 @@ const MovieDetails: FC<MovieDetailsProps> = ({ movieDetails }) => {
             ))}
           </div>
         </div>
-      ) : (
-        <ErrorComponent errorMessage={movieDetails?.Error} />
       )}
+      {movieDetails?.Error && <ErrorComponent errorMessage={movieDetails?.Error} />}
     </>
   );
 };

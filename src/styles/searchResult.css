@@ -1,11 +1,18 @@
 .movie-card {
-    width: 300px;
     border-radius: 5px;
     border: 1px solid #8d8d8d;
     cursor: pointer;
-    margin: 4px;
+    margin: 5px;
     transition: all 0.3s ease-in-out;
-    flex-basis: calc(20% - 8px);
+    flex-basis: calc(20% - 10px);
+    overflow: hidden;
+}
+.movie-card span {
+    width: 250px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
 }
 .movie-results {
     display: flex;
