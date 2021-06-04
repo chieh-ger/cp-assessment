@@ -12,7 +12,7 @@ const MovieDetails: FC<MovieDetailsProps> = ({ movieDetails }) => {
   return (
     <>
       {movieDetails?.Response.toLowerCase() === 'true' ? (
-        <div className='movie-result-block'>
+        <div className='movie-result-block' key={`movie-details-${movieDetails.imdbID}`}>
           <h1 title={movieDetails?.Title} aria-label={movieDetails?.Title}>{movieDetails?.Title} ({movieDetails?.Year})</h1>
           <p title={`Runtime: ${movieDetails?.Runtime}`} aria-label={`Runtime: ${movieDetails?.Runtime}`}>{movieDetails?.Runtime}</p>
           <p title={`Rated: ${movieDetails?.Rated}`} aria-label={`Rated: ${movieDetails?.Rated}`}>Rated: {movieDetails?.Rated}</p>
@@ -24,7 +24,7 @@ const MovieDetails: FC<MovieDetailsProps> = ({ movieDetails }) => {
           <div>
             <p>
               {movieDetails?.Genre.split(', ').map(genre => (
-                <span title={`Genre: ${genre}`} aria-label={`Genre: ${genre}`} className='genre-items'>{genre}</span>
+                <span key={`genre-${genre}`} title={`Genre: ${genre}`} aria-label={`Genre: ${genre}`} className='genre-items'>{genre}</span>
               ))}
             </p>
             <p title={`Synopsis: ${movieDetails?.Plot}`} aria-label={`Synopsis: ${movieDetails?.Plot}`}><b>Synopsis: </b><br />{movieDetails?.Plot}</p>
@@ -43,8 +43,8 @@ const MovieDetails: FC<MovieDetailsProps> = ({ movieDetails }) => {
               <p className='ratings'>metascore</p>
               <p title={`Metascore Rating: ${movieDetails?.Metascore}`} aria-label={`Metascore Rating: ${movieDetails?.Metascore}`}>{movieDetails?.Metascore}</p>
             </div>
-            {movieDetails?.Ratings.map(rating => (
-              <div className='col'>
+            {movieDetails?.Ratings.map((rating, index) => (
+              <div className='col' key={`rating-${index}`}>
                 <p className='ratings'>{rating.Source}</p>
                 <p title={`Other Ratings: ${rating.Source} - ${rating.Value}`} aria-label={`Other Ratings: ${rating.Source} - ${rating.Value}`}>{rating.Value}</p>
               </div>

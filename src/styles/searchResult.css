@@ -1,17 +1,18 @@
 .movie-card {
-    display: inline-block;
-    width: 250px;
-    margin-right: 5px;
+    width: 300px;
     border-radius: 5px;
-    border: 1px solid #ddd;
-    padding-right: 0;
-    padding-left: 0;
+    border: 1px solid #8d8d8d;
     cursor: pointer;
-    margin-bottom: 5px;
+    margin: 4px;
     transition: all 0.3s ease-in-out;
+    flex-basis: calc(20% - 8px);
+}
+.movie-results {
+    display: flex;
+    flex-wrap: wrap;
 }
 .empty-img {
-    height: 370px;
+    height: 300px;
     background: #666;
 }
 .movie-card:hover {
