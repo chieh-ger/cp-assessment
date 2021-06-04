@@ -42,11 +42,9 @@ const SearchResultComponent: FC<SearchResultProps> = ({ searchResult, setNewResu
             {searchResult && searchResult?.Response.toLowerCase() === 'true' && <p>Page {current} of {totalPages === 0 ? '1' : totalPages}</p>}
             <div className="movie-results">
                 {searchResult?.Response.toLowerCase() === 'true' && searchResult.Search.map((searchItem, index) => (
-                    <>
-                        <div title={searchItem.Title} className="movie-card" key={`movie-poster-${searchItem.imdbID}`}>
-                            <img tabIndex={index + 1} aria-label={searchItem.Title} src={searchItem.Poster.startsWith('http') ? searchItem.Poster : NO_IMG} className="card-img-top" height='370px' alt={searchItem.Title} onKeyPress={(e) => e.key === 'Enter' ? getMovieDetails(searchItem.Title) : ''} onClick={() => getMovieDetails(searchItem.Title)} />
-                        </div>
-                    </>
+                    <div title={searchItem.Title} className="movie-card" key={`movie-poster-${searchItem.imdbID}`}>
+                        <img tabIndex={index + 1} aria-label={searchItem.Title} src={searchItem.Poster.startsWith('http') ? searchItem.Poster : NO_IMG} className="card-img-top" height='370px' alt={searchItem.Title} onKeyPress={(e) => e.key === 'Enter' ? getMovieDetails(searchItem.Title) : ''} onClick={() => getMovieDetails(searchItem.Title)} />
+                    </div>
                 ))}
             </div>
             {searchResult && searchResult?.Response.toLowerCase() !== 'true' && <ErrorComponent errorMessage={searchResult?.Error} />}
