@@ -55,7 +55,11 @@ const SearchResultComponent: FC<SearchResultProps> = ({
   return (
     <div className="container mt-20">
       {searchResult && searchResult?.Response.toLowerCase() === 'true' && (
-        <p>
+        <p
+          aria-label={`Page ${current} of ${
+            totalPages === 0 ? '1' : totalPages
+          }`}
+        >
           Page {current} of {totalPages === 0 ? '1' : totalPages}
         </p>
       )}
@@ -68,7 +72,9 @@ const SearchResultComponent: FC<SearchResultProps> = ({
               key={`movie-poster-${searchItem.imdbID}`}
               onClick={() => getMovieDetails(searchItem.Title)}
             >
-              <p>
+              <p
+                aria-label={`Movie: "${searchItem.Title}" from year ${searchItem.Year}`}
+              >
                 <span>{searchItem.Title}</span>
                 <br />
                 {searchItem.Year}
