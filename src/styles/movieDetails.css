@@ -1,0 +1,28 @@
+.ratings {
+    background: darkorange;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.genre-items {
+    padding: 3px 12px;
+    margin-right: 5px;
+    color: #fff;
+    border-radius: 10px;
+    background: purple;
+    font-size: 12px;
+}
+.movie-result-block {
+    margin-top: 20px;
+    text-align: left;
+}
+.movie-result-img-block {
+    margin-right: 10px;
+    float: left;
+}
